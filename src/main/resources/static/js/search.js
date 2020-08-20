@@ -130,9 +130,9 @@ const baseObj = function(){
                     $('.page-item .page-link').on('click', function(){
                         let pageNo = $(this).html().trim();
                         if(pageNo == '이전'){
-                            pageNo = currentPage - 1;
+                            pageNo = (currentPage*1) - 1;
                         }else if(pageNo == '다음'){
-                            pageNo = currentPage + 1;
+                            pageNo = (currentPage*1) + 1;
                         }
                         fnSearch(pageNo);
                     });
