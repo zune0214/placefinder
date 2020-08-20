@@ -1,0 +1,1 @@
+insert into user_info (user_id, password, created_time) values ('hello', 'cd01ee0b12ee53456bb33f276176dc019c01b1b2a230444a4b87d7f2edc79bae', now());

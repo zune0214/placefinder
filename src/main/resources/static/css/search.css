@@ -1,0 +1,4 @@
+*{font-size: 14px;}
+body, .body {
+    min-width: 880px;
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link href="/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/css/search.css" rel="stylesheet"/>
+    <title>장소 검색</title>
+</head>
+<body>
+    <div class="container body">
+        <div class="row">
+            <div class="mt-5 mb-5 col-12">
+                <div class="input-group mp-3">
+                    <input id="searchKeyword" type="text" class="form-control" placeholder="장소 키워드를 입력하여 검색해보세요">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary pf_search_btn" type="button">검색</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-8">
+                <div id="searchBody" class="bd-example"></div>
+            </div>
+            <div class="col-4">
+                <div>
+                    <div class="alert alert-primary" role="alert">
+                        인기검색어 TOP 10
+                    </div>
+                    <ul id="keywordRank" class="list-group list-group-sm"></ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <nav class="col-12">
+                <ul id="pageNavigation" class="pagination pagination-sm justify-content-center">
+                    <li class="page-item disabled"><a class="page-link" href="#">검색결과가 없습니다</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</body>
+<script src="/js/jquery-3.5.1.min.js"></script>
+<script src="/js/search.js"></script>
+<script>
+    baseObj.rank($('#keywordRank'));
+
+    $('.pf_search_btn').on('click', function () {
+        fnSearch(1);
+    });
+
+    $('#searchKeyword').on('keypress', function(event){
+        if ( event.which == 13 ) {
+            event.preventDefault();
+            fnSearch(1);
+        }
+    });
+
+    function fnSearch(pageNo){
+        baseObj.search($('#searchKeyword').val(), $('#searchBody'), $('#pageNavigation'), pageNo);
+    }
+</script>
+</html>
